@@ -4,28 +4,29 @@ SMF Addin Installer
 [InnoSetup][] script to install and activate the
 SMF Excel addin.
 
-The [SMF][http://ogres-crypt.com/SMF/] (Stock Market Functions)
+The [SMF](http://ogres-crypt.com/SMF/) (Stock Market Functions)
 add-in adds a number of functions to EXCEL that can allow data
 to be extracted and/or retrieved from the
 web and placed directly into EXCEL cells or ranges.
 
-The [SMF website][http://ogres-crypt.com/SMF/]
+The [SMF website](http://ogres-crypt.com/SMF/)
 contains the add-in and its supporting files -- documentation,
 templates, FAQs, etc.
 
 Questions about the SMF add-in should be directed to
 the discussion groups on either
-[Yahoo][https://groups.yahoo.com/neo/groups/smf_addin/info]
-or [Google][https://groups.google.com/forum/#!forum/smf-addin].
+[Yahoo](https://groups.yahoo.com/neo/groups/smf_addin/info)
+or [Google](https://groups.google.com/forum/#!forum/smf-addin).
 
 Further information
 -------------------
 
 This installer uses the add in installation technology from
-<https://github.com/bovender/ExcelAddinInstaller>.
+the [ExcelAddinInstaller](https://github.com/bovender/ExcelAddinInstaller)
+project.
 
 For background information on the installation technology, see
-this [blog][http://xltoolbox.sf.net/blog/2013/12/using-innosetup-to-install-excel-addins>] entry.
+this [blog](http://xltoolbox.sf.net/blog/2013/12/using-innosetup-to-install-excel-addins>) entry.
 
 Installer License
 -----------------
