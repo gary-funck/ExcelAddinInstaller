@@ -1,7 +1,10 @@
 deploy/
-!addin-installer.iss
+source/
+!*.iss
+# local-config.iss is a Make artifact.
+local-config.iss
 $*
 *~
+*.log
 *.swp
 *.bak
-*.iss
