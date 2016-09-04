@@ -26,7 +26,8 @@
 [Files]
 ; The include file makes adds all .XLA and .XLAM files contained in the
 ; SOURCEDIR to the project.
-#include "inc/files-addins.iss"
+; Don't use the default file handling.
+; #include "inc/files-addins.iss"
 
 ; Define any additional files in the custom files.iss file.
 #ifexist "files.iss"
