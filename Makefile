@@ -5,9 +5,11 @@ endif
 PATH:=$(PWD)/bin:$(PATH)
 # Add the Inno Setup installation directory to PATH.
 INNO_SETUP_PATH=/c/Program Files (x86)/Inno Setup 5
-PATH+=:$(INNO_SETUP_PATH)
+PATH:=$(PATH):$(INNO_SETUP_PATH)
 export PATH
 ifneq ($(shell which iscc >/dev/null 2>&1 && echo OK),OK)
+  $(info $(shell which iscc))
+  $(info PATH = [$(PATH)])
   $(error iscc not found)
 endif
 ADD_IN=source/SMF/SMF Add In/RCH_Stock_Market_Functions.xla
@@ -18,15 +20,16 @@ CFG_YEARS=\#define YEARSPAN \"2007-$$smf_year\"  ; The year(s) of publication
 
 .PHONY: default clean
 
-default: source local-config.iss
+default: source
 	iscc addin-installer.iss
 
-source:
-	mkdir source
+source: FORCE
+	mkdir -p source
 	cd source && get-smf-web-pages
 	# Update version number information in the config file.
-	$(MAKE) local-config.iss
+	$(MAKE) -B local-config.iss
 
+FORCE:
 
 # example: RCH_Stock_Market_Functions-2.1.2016.09.02.zip
 local-config.iss:

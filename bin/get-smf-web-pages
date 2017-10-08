@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH+="${PATH}:$PWD"
+export PATH+=":$PWD"
 base_url="http://ogres-crypt.com/SMF"
 [ -d SMF ] && rm -rf SMF
 # -k: convert to relative links
