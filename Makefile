@@ -1,16 +1,10 @@
+SHELL:=/bin/bash
 ifneq ($(shell uname -o),Cygwin)
   $(error This Makefile requires Cygwin)
 endif
-# Add the local bin directory to PATH.
-PATH:=$(PWD)/bin:$(PATH)
-# Add the Inno Setup installation directory to PATH.
-INNO_SETUP_PATH=/c/Program Files (x86)/Inno Setup 5
-PATH:=$(PATH):$(INNO_SETUP_PATH)
-export PATH
-ifneq ($(shell which iscc >/dev/null 2>&1 && echo OK),OK)
-  $(info $(shell which iscc))
-  $(info PATH = [$(PATH)])
-  $(error iscc not found)
+ISCC=/c/Program Files (x86)/Inno Setup 5/iscc.exe
+ifneq ($(shell test -f "$(ISCC)" && echo OK),OK)
+  $(error iscc not found: "$(ISCC)")
 endif
 ADD_IN=source/SMF/SMF Add In/RCH_Stock_Market_Functions.xla
 ZIP_FILE=$(wildcard source/SMF/RCH_Stock_Market_Functions-*.zip)
@@ -20,12 +14,14 @@ CFG_YEARS=\#define YEARSPAN \"2007-$$smf_year\"  ; The year(s) of publication
 
 .PHONY: default clean
 
-default: source
-	iscc addin-installer.iss
+default: $(ADD_IN)
+	'$(ISCC)' addin-installer.iss
+
+$(ADD_IN): source
 
 source: FORCE
 	mkdir -p source
-	cd source && get-smf-web-pages
+	cd source && $(PWD)/bin/get-smf-web-pages
 	# Update version number information in the config file.
 	$(MAKE) -B local-config.iss
 
